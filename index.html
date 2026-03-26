@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Name | PORTFOLIO</title>
+<title>ROHITH CALEF.D</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -119,41 +119,9 @@ section h2 {
   color: #cbd5f5;
 }
 
-/* CONTACT FORM */
-#contact form {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 500px;
-}
-
-#contact input,
-#contact textarea {
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-}
-
-#contact button {
-  padding: 12px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(90deg, #38bdf8, #a78bfa);
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#contact button:hover {
-  transform: scale(1.05);
-}
-
+/* CONTACT */
 #contact p {
-  margin-top: 20px;
+  margin-bottom: 12px;
   color: #c7d2fe;
 }
 
@@ -183,7 +151,7 @@ footer {
 
 <header>
   <nav class="navbar">
-    <h1>Name</h1>
+    <h1>HARINI</h1>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
@@ -195,7 +163,7 @@ footer {
 <section id="about">
   <h2>About Me</h2>
   <p>
-    Hello, I’m Harini, Welcome to my personal website where I share my journey, 
+    Hello, I’m HARINI Welcome to my personal website where I share my journey,
     skills, and interests.
   </p>
 </section>
@@ -211,24 +179,15 @@ footer {
 
 <section id="contact">
   <h2>Contact</h2>
-
-  <form id="contact-form" action="https://formspree.io/f/link" method="POST">
-    <input type="text" name="name" placeholder="Harini" required>
-    <input type="email" name="email" placeholder="25bcac24@kristujayanti.com" required>
-    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-
-    <button type="submit">Send Message</button>
-  </form>
-
-  <p>Email: 25bcac24@gmail.com</p>
+  <p>Email: HARINI@gmail.com</p>
+  <p>LinkedIn: linkedin.com/in/HARINI</p>
 </section>
 
 <footer>
-  © 2026 Harini
+  © 2026 HARINI
 </footer>
 
 <script>
-/* SCROLL ANIMATION */
 const sections = document.querySelectorAll("section");
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -239,34 +198,6 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 
 sections.forEach(section => observer.observe(section));
-
-/* FORM SUBMISSION */
-const form = document.getElementById("contact-form");
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const formData = new FormData(form);
-
-  try {
-    const res = await fetch("https://formspree.io/f/xvzweozw", {
-      method: "POST",
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
-
-    if (res.ok) {
-      alert("Message sent successfully!");
-      form.reset();
-    } else {
-      alert("Failed to send message");
-    }
-  } catch (err) {
-    alert("Error sending message");
-  }
-});
 </script>
 
 </body>
