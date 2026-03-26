@@ -3,12 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harini</title>
+<title>Harini | PORTFOLIO</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -22,9 +17,72 @@
 }
 
 body {
-  background: radial-gradient(circle at top, #111827, #020617);
-  color: #e5e7eb;
+  background: #00008B;
+  color: #020617;
   scroll-behavior: smooth;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* PARTICLE EFFECT */
+.particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.8), transparent);
+  border-radius: 50%;
+  filter: blur(3px);
+}
+
+.particle-1 { animation: float1 20s infinite; }
+.particle-2 { animation: float2 25s infinite; }
+.particle-3 { animation: float3 30s infinite; }
+.particle-4 { animation: float1 22s infinite reverse; }
+.particle-5 { animation: float2 28s infinite reverse; }
+
+@keyframes float1 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translate(100px, -100px) scale(0.8); }
+  90% { opacity: 1; }
+  100% { transform: translate(0, 200px) scale(1); opacity: 0; }
+}
+
+@keyframes float2 {
+  0% { transform: translate(50px, -50px) scale(0.8); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translate(-80px, 100px) scale(1); }
+  90% { opacity: 1; }
+  100% { transform: translate(50px, 250px) scale(0.8); opacity: 0; }
+}
+
+@keyframes float3 {
+  0% { transform: translate(-100px, 0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translate(120px, 150px) scale(0.9); }
+  90% { opacity: 1; }
+  100% { transform: translate(-100px, 300px) scale(1); opacity: 0; }
 }
 
 /* HEADER */
@@ -32,9 +90,9 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.9);
   backdrop-filter: blur(12px);
-  box-shadow: 0 8px 20px rgba(56,189,248,0.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   z-index: 1000;
 }
 
@@ -50,7 +108,7 @@ header {
 .navbar h1 {
   font-size: 22px;
   font-weight: 700;
-  background: linear-gradient(90deg, #38bdf8, #a78bfa);
+  background: linear-gradient(90deg, #0ea5e9, #7c3aed);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -59,7 +117,7 @@ header {
   margin-left: 25px;
   text-decoration: none;
   font-weight: 600;
-  color: #e5e7eb;
+  color: #e2e8f0;
   position: relative;
   transition: 0.3s;
 }
@@ -71,7 +129,7 @@ header {
   height: 2px;
   left: 0;
   bottom: -6px;
-  background: linear-gradient(90deg, #38bdf8, #a78bfa);
+  background: linear-gradient(90deg, #0ea5e9, #7c3aed);
   transition: 0.3s;
 }
 
@@ -84,13 +142,16 @@ section {
   max-width: 1100px;
   margin: 120px auto 60px;
   padding: 60px 6%;
-  background: linear-gradient(145deg, #020617, #020617);
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
   border-radius: 22px;
-  box-shadow: 0 30px 70px rgba(15,23,42,0.9);
-  border: 1px solid rgba(148,163,184,0.08);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.5), 0 0 40px rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.2);
   opacity: 0;
   transform: translateY(40px);
   transition: 0.8s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 10;
 }
 
 section.show {
@@ -101,8 +162,14 @@ section.show {
 section h2 {
   font-size: 32px;
   margin-bottom: 20px;
-  background: linear-gradient(90deg, #38bdf8, #a78bfa);
+  background: linear-gradient(90deg, #0ea5e9, #7c3aed);
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+section p, section li {
+  color: #e2e8f0;
+}
   -webkit-text-fill-color: transparent;
 }
 
@@ -111,6 +178,7 @@ section h2 {
   max-width: 750px;
   font-size: 17px;
   line-height: 1.8;
+  color: #e2e8f0;
 }
 
 /* PROJECTS */
@@ -121,13 +189,53 @@ section h2 {
 
 #projects li {
   margin-bottom: 12px;
-  color: #cbd5f5;
+  color: #cbd5f0;
 }
 
-/* CONTACT */
+/* CONTACT FORM */
+#contact form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+}
+
+#contact input,
+#contact textarea {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #445878;
+  outline: none;
+  font-size: 14px;
+  background: rgba(15, 23, 42, 0.6);
+  color: #e2e8f0;
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+  color: #94a3b8;
+}
+
+#contact button {
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #0ea5e9, #7c3aed);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#contact button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+}
+
 #contact p {
-  margin-bottom: 12px;
-  color: #c7d2fe;
+  margin-top: 20px;
+  color: #cbd5f0;
 }
 
 /* FOOTER */
@@ -136,6 +244,8 @@ footer {
   padding: 30px 20px;
   color: #94a3b8;
   font-size: 14px;
+  position: relative;
+  z-index: 10;
 }
 
 /* RESPONSIVE */
@@ -154,9 +264,16 @@ footer {
 
 <body>
 
+<!-- PARTICLES -->
+<div class="particle particle-1" style="width: 8px; height: 8px; left: 10%; top: 20%;"></div>
+<div class="particle particle-2" style="width: 6px; height: 6px; left: 20%; top: 40%;"></div>
+<div class="particle particle-3" style="width: 10px; height: 10px; left: 80%; top: 30%;"></div>
+<div class="particle particle-4" style="width: 7px; height: 7px; left: 15%; top: 60%;"></div>
+<div class="particle particle-5" style="width: 9px; height: 9px; left: 85%; top: 50%;"></div>
+
 <header>
   <nav class="navbar">
-    <h1>HARINI</h1>
+    <h1>Harini</h1>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
@@ -168,8 +285,8 @@ footer {
 <section id="about">
   <h2>About Me</h2>
   <p>
-    Hello, I’m HARINI Welcome to my personal website where I share my journey,
-    skills, and interests.
+    Hello, I’m Harini, Welcome to my personal website where I share my journey, 
+    skills, interests
   </p>
 </section>
 
@@ -184,15 +301,24 @@ footer {
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>Email: HARINI@gmail.com</p>
-  <p>LinkedIn: linkedin.com/in/HARINI</p>
+
+  <form id="contact-form" action="https://formspree.io/f/link" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <p>Email: 25bcac24@gmail.com</p>
 </section>
 
 <footer>
-  © 2026 HARINI
+  © 2026 Harini
 </footer>
 
 <script>
+/* SCROLL ANIMATION */
 const sections = document.querySelectorAll("section");
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -203,204 +329,34 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 
 sections.forEach(section => observer.observe(section));
-</script>
 
-</body>
-</html></title>
+/* FORM SUBMISSION */
+const form = document.getElementById("contact-form");
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-<style>
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Nunito', sans-serif;
-}
+  const formData = new FormData(form);
 
-body {
-  background: radial-gradient(circle at top, #111827, #020617);
-  color: #e5e7eb;
-  scroll-behavior: smooth;
-}
+  try {
+    const res = await fetch("https://formspree.io/f/xdawqbdk", {
+      method: "POST",
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
 
-/* HEADER */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 20px rgba(56,189,248,0.08);
-  z-index: 1000;
-}
-
-.navbar {
-  max-width: 1100px;
-  margin: auto;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbar h1 {
-  font-size: 22px;
-  font-weight: 700;
-  background: linear-gradient(90deg, #38bdf8, #a78bfa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.nav-links a {
-  margin-left: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  color: #e5e7eb;
-  position: relative;
-  transition: 0.3s;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  left: 0;
-  bottom: -6px;
-  background: linear-gradient(90deg, #38bdf8, #a78bfa);
-  transition: 0.3s;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-/* SECTION BASE */
-section {
-  max-width: 1100px;
-  margin: 120px auto 60px;
-  padding: 60px 6%;
-  background: linear-gradient(145deg, #020617, #020617);
-  border-radius: 22px;
-  box-shadow: 0 30px 70px rgba(15,23,42,0.9);
-  border: 1px solid rgba(148,163,184,0.08);
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s ease;
-}
-
-section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-section h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-  background: linear-gradient(90deg, #38bdf8, #a78bfa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ABOUT */
-#about p {
-  max-width: 750px;
-  font-size: 17px;
-  line-height: 1.8;
-}
-
-/* PROJECTS */
-#projects ul {
-  margin-top: 15px;
-  padding-left: 20px;
-}
-
-#projects li {
-  margin-bottom: 12px;
-  color: #cbd5f5;
-}
-
-/* CONTACT */
-#contact p {
-  margin-bottom: 12px;
-  color: #c7d2fe;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 30px 20px;
-  color: #94a3b8;
-  font-size: 14px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  section {
-    padding: 40px 20px;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <nav class="navbar">
-    <h1>HARINI</h1>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-</header>
-
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    Hello, I’m HARINI Welcome to my personal website where I share my journey,
-    skills, and interests.
-  </p>
-</section>
-
-<section id="projects">
-  <h2>Projects</h2>
-  <ul>
-    <li>Project 1 – Portfolio website</li>
-    <li>Project 2 – Mini web design</li>
-    <li>Project 3 – Student record system</li>
-  </ul>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: HARINI@gmail.com</p>
-  <p>LinkedIn: linkedin.com/in/HARINI</p>
-</section>
-
-<footer>
-  © 2026 HARINI
-</footer>
-
-<script>
-const sections = document.querySelectorAll("section");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
+    if (res.ok) {
+      alert("Message sent successfully!");
+      form.reset();
+    } else {
+      alert("Failed to send message");
     }
-  });
-}, { threshold: 0.2 });
-
-sections.forEach(section => observer.observe(section));
+  } catch (err) {
+    alert("Error sending message");
+  }
+});
 </script>
 
 </body>
